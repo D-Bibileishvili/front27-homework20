@@ -1,7 +1,6 @@
 function sliderFn() {
   const slides = document.querySelectorAll(".slide");
-  const next = document.querySelector(".next");
-  const prev = document.querySelector(".prev");
+
   let currentSlide = 0;
 
   function renderSlides() {
@@ -14,8 +13,6 @@ function sliderFn() {
     });
   }
 
-  // renderSlides();
-
   function goToNextSlide() {
     if (currentSlide === slides.length - 1) {
       currentSlide = 0;
@@ -25,35 +22,23 @@ function sliderFn() {
     renderSlides();
   }
 
-  function goToPreSlide() {
-    if (currentSlide === 0) {
-      currentSlide = slides.length - 1;
-    } else {
-      currentSlide--;
-    }
-    renderSlides();
+  function startSlide() {
+    slideInterval = setInterval(goToNextSlide, 3000);
   }
 
-  next.addEventListener("click", goToNextSlide);
-  prev.addEventListener("click", goToPreSlide);
+  function stopSlide() {
+    clearInterval(slideInterval);
+  }
 
-  // setInterval(goToNextSlide, 5000);
+  document
+    .querySelector(".slider-wrapper")
+    .addEventListener("mouseenter", stopSlide);
 
-  document.addEventListener("keyup", (e) => {
-    console.log("key up", e);
-    if (e.code === "ArrowRight") {
-      goToNextSlide();
-    }
-    if (e.code === "ArrowLeft") {
-      goToPreSlide();
-    }
-  });
-  // document.addEventListener("keydown", (e) => {
-  // 	console.log("key down", e);
-  // });
-  // document.addEventListener("keypress", (e) => {
-  // 	console.log("key press", e);
-  // });
+  document
+    .querySelector(".slider-wrapper")
+    .addEventListener("mouseleave", startSlide);
+
+  startSlide();
 }
 
 sliderFn();
