@@ -17,6 +17,36 @@ function realTimeClock() {
 
 setInterval(realTimeClock, 1000);
 
+// Countdown
+function updateCountdown() {
+  const now = new Date();
+  const targetDate = new Date(now.getFullYear(), 2, 5, 20, 0, 0);
+
+  const different = targetDate - now;
+
+  if (different > 0) {
+    const days = Math.floor(different / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (different % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((different % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((different % (1000 * 60)) / 1000);
+
+    document.getElementById(
+      "countdown"
+    ).textContent = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Secunds`;
+  } else {
+    document.getElementById(
+      "countdown"
+    ).textContent = `ლექციამდე დარჩენილი დრო ამოიწურა`;
+  }
+}
+
+setInterval(() => {
+  realTimeClock();
+  updateCountdown();
+}, 1000);
+
 // slider
 function sliderFn() {
   const slides = document.querySelectorAll(".slide");

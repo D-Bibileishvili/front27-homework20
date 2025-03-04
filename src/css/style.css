@@ -16,6 +16,15 @@ img {
   color: rgb(63, 171, 243);
 }
 
+/* countdown */
+#countdown {
+  text-align: center;
+  font-size: 100px;
+  font-weight: bold;
+  background-color: rgb(219, 145, 194);
+  color: darkgreen;
+}
+
 /* slider */
 .slider {
   position: relative;
