@@ -73,7 +73,7 @@ function sliderFn() {
   }
 
   function startSlide() {
-    slideInterval = setInterval(goToNextSlide, 3000);
+    slideInterval = setInterval(goToNextSlide, 5000);
   }
 
   function stopSlide() {
